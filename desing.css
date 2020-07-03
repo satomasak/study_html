@@ -1,0 +1,59 @@
+body {
+display: grid;
+grid-template:	
+	"top top top top top top top top top top top top" 200px
+	"nav nav nav nav nav nav nav nav nav nav nav nav" 100px
+	"mn1 mn1 mn1 mn1 mn1 mn1 mn1 mn1 sc1 sc1 sd1 sd1" 600px
+	"sd2 sd2 sc2 sc2 dv1 dv1 dv1 dv1 dv1 dv1 dv1 dv1" 600px
+	"fot fot fot fot fot fot fot fot fot fot fot fot" 200px
+	/ 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
+}
+
+header {
+	grid-area: top;
+	background-color: RGB(152, 152, 102);
+	color: #ffffff;
+}
+nav {
+	grid-area: nav;
+	background-color: RGB(152, 200, 102);
+	color: #ffffff;
+}
+
+main {
+	grid-area: mn1;
+	background-color: RGB(200, 200, 102);
+	color: #ffffff;
+}
+
+aside {
+	grid-area: sd1;
+	background-color: RGB(10, 200, 200);
+	color: #ffffff;
+}
+
+section {
+	grid-area: sc1;
+	background-color: RGB(200, 200, 200);
+	color: #ffffff;
+}
+#a {
+    grid-area: dv1;
+    background-color: RGB(200, 100, 50);
+    color: #ffffff
+}
+#b {
+    grid-area: sc2;
+    background-color: RGB(200, 200, 200);
+    color: #ffffff
+}
+#c {
+    grid-area: sd2;
+    background-color: RGB(10, 200, 200);
+    color: #ffffff
+}
+footer {
+	grid-area: fot;
+	background-color: RGB(200, 20, 50);
+	color: #ffffff;
+}
