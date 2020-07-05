@@ -1,0 +1,72 @@
+@charset "utf-8";
+body {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;      /*vhは画面を100分割した単位　1vhで1/100画面*/
+
+
+}
+aside {
+    width: 25%;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+nav {
+    background-color: rgb(200, 100, 110);
+}
+footer {
+    background-color: rgb(150, 250, 150);
+    height: 300px;
+    margin-top: auto;       /*footerを一番下に配置する*/
+}
+main {
+    background-color: rgb(10, 100, 100);
+    /*flex: 1; */  /*メイン領域の幅を広げるため*/
+    width: 700px;
+    margin: 0 auto;
+}
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/*ハンバーガーメニュー作成*/
+.open, .back {
+    display: none; /*PCでは必要がないため非表示*/
+}
+input[type="checkbox"] {    /*inputをdisplay: noneにするとlabelのforが連携しないため絶対位置指定でチェックボックスを画面外に隠す*/
+    position: absolute;
+    left: 50vw;         /*チェックボックスの位置　マイナスで画面外へ*/
+}
+@media screen and (max-width: 1000px) {     /*レスポンシブルデザイン*/
+    main {
+        width: 100%;           /*1000px以下での横幅設定*/
+        padding-top: 50px;      /*ハンバーガーメニューのアイコンとメインの文字がかぶらないようにする*/
+    }
+    .open, .back {
+        display: block; /*スマホでは表示*/
+    }
+    .open {
+        position: absolute;
+    }
+    aside {
+        position: absolute;        /*レイヤーのレベルが上がり、左詰めの一番上位に設定される（下にメインが潜り込んでいる）*/
+         left: -250px;              /*asideの最小幅を250pxに設定しているため*/
+        height: 100%;              /*position:absoluteにより高さがコンテンツ分だけに縮小したため修正*/
+        transition: all 0.2s;      /*アニメーションの設定　all:すべての動きに対して　0.2秒の動作*/
+        background: #ffffff;       /*背景色を設定しないと透過して下のメインコンテンツが透けてしまう*/
+    }
+    input[type="checkbox"]:checked ~ aside {    /*疑似クラス:checked チェックが入っているときに動作*/
+    /*~:間接セレクター　親要素内の間接セレクターを設定した要素の後の要素に効果。~ asideでbody内の後にあるasideを指定*/
+        left: 0;        /*チェックボックスにチェックが入っているとき、asideに適用*/
+    }
+    input[type="checkbox"]:checked ~ .back {        /*チェックされているときのクラスbackに対して*/
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);     /*a　透過　20%の透過*/
+    }
+
+}
